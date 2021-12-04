@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../daily_ui_day1_sign_in/css"
+		},
+		{
+			"path": "../daily_ui_day1_sign_in/images"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Trueque-Libros"
+	}
+}
