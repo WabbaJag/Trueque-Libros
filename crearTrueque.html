@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimalista - New Amazing HTML5 Template</title>
+    <title>e-Books</title>
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/responsee.css">
@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/template-style.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,400,600,900&subset=latin-ext" rel="stylesheet"> 
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>      
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>     
+    <script type="text/javascript" src="js/crearTrueque.js"></script> 
   </head>
 
   <body class="size-1140">
@@ -50,36 +51,40 @@
           
           <section class="section background-white">
             <div class="line text-center">        
-              <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">¡Agregar nuevo Trueque!</h1>
+              <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">Nuevo Trueque</h1>
             </div>  
             <div class="s-4 m-4 l-10 center">
-              <h4 class="text-size-20 margin-bottom-20 text-dark text-center">Rellene las casillas:</h4>
+              <h4 class="text-size-20 margin-bottom-20 text-dark text-center">Por favor, rellene las siguientes casillas para agregar un nuevo trueque:</h4>
               <form name="contactForm" class="customform" method="post">
                 <div class="s-12">
                   <div class="margin">
                     <div class="s-12 m-12 l-4">
-                      <input name="email" class="required email" placeholder="Título" title="Your e-mail" type="text">
-                      <p class="email-error form-error">Please enter your e-mail.</p>
+                      <input name="titulo" class="required email" placeholder="Título" title="Your e-mail" type="text">
+                      <p class="email-error form-error">Por favor, ingrese un título.</p>
                     </div>
                     <div class="s-4 m-4 l-4">
-                      <input name="name" class="name" placeholder="Autor" title="Your name" type="text">
-                      <p class="name-error form-error">Please enter your name.</p>
+                      <input name="autore" class="name" placeholder="Autor" title="Your name" type="text">
+                      <p class="name-error form-error">Por favor, ingrese un/una autor/autora.</p>
                     </div>
                     <div class="s-4 m-4 l-4">
-                      <input name="name" class="name" placeholder="Año" title="Your name" type="text">
-                      <p class="name-error form-error">Please enter your name.</p>
+                      <input name="año" class="name" placeholder="Año" title="Your name" type="text">
+                      <p class="name-error form-error">Por favor, ingrese un año.</p>
                     </div>
                   </div>
                 </div>
                 <div class="s-12"> 
-                  <input name="subject" class="subject" placeholder="Editorial" title="Subject" type="text">
-                  <p class="subject-error form-error">Please enter the subject.</p>
+                  <input name="editorial" class="subject" placeholder="Editorial" title="Subject" type="text">
+                  <p class="subject-error form-error">Por favor, ingrese una editorial.</p>
                 </div>
                 <div class="s-12">
-                  <textarea name="message" class="required message" placeholder="Your message" rows="3"></textarea>
-                  <p class="message-error form-error">Please enter your message.</p>
+                  <textarea name="descripcion" class="required message" placeholder="Breve Descripción del Libro" rows="3"></textarea>
+                  <p class="message-error form-error">Por favor, ingrese una breve descripcion del libro.</p>
                 </div>
-                <div class="s-12"><button class="s-12 submit-form button background-primary text-white" type="submit">Submit Button</button></div>
+                <div class="s-12">
+                  <textarea name="mensaje" class="required message" placeholder="¿Qué libro/autores/géneros le interesan a cambio?" rows="3"></textarea>
+                  <p class="message-error form-error">Por favor, ingrese su mensaje.</p>
+                </div>
+                <div class="s-12"><button class="s-12 submit-form button background-primary text-white" type="submit" value="Agregar" onclick="almacenarTrueque()">Agregar Trueque</button></div>
               </form>
             </div>           
           </section> 
@@ -92,8 +97,7 @@
           <a class="margin-right-10" target="_blank" href="https://www.facebook.com"><i class="icon-facebook_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">FACEBOOK</span></a>
           <a class="margin-right-10" target="_blank" href="https://www.twitter.com"><i class="icon-twitter_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">TWITTER</span></a>
           <a class="margin-right-10" target="_blank" href="https://www.instagram.com"><i class="icon-instagram_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">INSTAGRAM</span></a>
-          <a target="_blank" href="https://www.linkedin.com"><i class="icon-linked_in_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">LINKEDIN</span></a>                                                                         
-        </div>
+         </div>
 
         <!-- Main Footer -->
         <section class="section-small-padding text-center background-dark full-width">
