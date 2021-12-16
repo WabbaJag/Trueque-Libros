@@ -86,7 +86,7 @@
                       <td>".$row["autor"]."</td>
                       <td>".$row["genero"]."</td>
                       <td>".$row["editorial"]."</td>
-                      <td>".$row["Idioma"]."</td>
+                      <td>".$row["idioma"]."</td>
                       <td>
                     </tr>";
             }
