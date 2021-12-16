@@ -37,14 +37,14 @@
         //Configuración de la codificación de los carácteres
         
         //Redacto String con COMANDO SQL
-        $comando = "UPDATE `producto` SET titulo='" .$titulo . "', autore='" .$autore . "', año='" .$año . "', editorial='" .$editorial . "',
+        $comando = "UPDATE `truque` SET titulo='" .$titulo . "', autore='" .$autore . "', año='" .$año . "', editorial='" .$editorial . "',
         descripcion='" .$descripcion . "', mensaje='" .$mensaje . "',creador='" .$creador . "' WHERE trueque=" . $trueque;
         //Ejecuto COMANDO SQL
         $resultado = mysqli_query($laconexion, $comando);
 
     } else {
         $accion = "agregado";
-        $comando = "INSERT INTO `producto`(titulo,autore,año,editorial,descripcion,mensaje,creador) 
+        $comando = "INSERT INTO `truque`(titulo,autore,año,editorial,descripcion,mensaje,creador) 
         VALUES ('" . $titulo . "','" .$autore . "','" . $año . "','" .$editorial . "','" . $descripcion . "','". $mensaje . "','". $creador . "')";
         //Ejecuto COMANDO SQL
         $resultado = mysqli_query($laconexion, $comando);
