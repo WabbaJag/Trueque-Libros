@@ -1,9 +1,9 @@
 <?php
-  function Conecta(){	
+  function Conecta(){   
     $elServidor = "localhost";
     $elUsuario ="root";
     $elPassword = "";
-    $laBD = "trueque_libros";
+    $laBD = "trueque-libros";
     $laconexion = new mysqli($elServidor, $elUsuario, $elPassword, $laBD);
     
     if ($laconexion->connect_error) {
@@ -11,22 +11,24 @@
     } 
     //echo "Conexion exitosa <br>";
     
-    return $laconexion;		
+    return $laconexion;     
     //aca ya se supone q sirvio la conexion
 
     $trueque = null;
     $accion = "";
 
     if (isset($_POST["trueque"])) {
-        $trueque = trim($_POST['trueque']);
+        $trueque = trim($_POST['trueque']);//borra en caso de q la variable no este vacia
     }
         //ya
     $titulo = $_POST['titulo'];
-    $autore = $_POST['autore'];
     $año = $_POST['año'];
+    $autore = $_POST['autore'];
+    $isbn = $_POST['isbn'];
+    $genero = $_POST['genero'];
+    $idioma = $_POST['idioma'];
     $editorial = $_POST['editorial'];
     $descripcion = $_POST['descripcion'];
-    $mensaje = $_POST['mensaje'];
     $creador = $_SESSION["usuarioActivoNombre"];
 
     mysqli_set_charset($laconexion, "utf8");
@@ -37,8 +39,8 @@
         //Configuración de la codificación de los carácteres
         
         //Redacto String con COMANDO SQL
-        $comando = "UPDATE 'truque' SET titulo='" .$titulo . "', autore='" .$autore . "', año='" .$año . "', editorial='" .$editorial . "',
-        descripcion='" .$descripcion . "', mensaje='" .$mensaje . "',creador='" .$creador . "' WHERE trueque=" . $trueque;
+        $comando = "UPDATE 'venta' SET titulo='" .$titulo . "', año='" .$año . "', autore='" .$autore . "', isbn='" .$isbn . "', genero='" .$genero . "', 
+        idioma='" .$idioma . "',  editorial='" .$editorial . "', descripcion='" .$descripcion . "',creador='" .$creador . "' WHERE venta=" . $trueque;
         //Ejecuto COMANDO SQL
         $resultado = mysqli_query($laconexion, $comando);
 

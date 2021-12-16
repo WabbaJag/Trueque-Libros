@@ -55,7 +55,9 @@
             </div>  
             <div class="s-4 m-4 l-10 center">
               <h4 class="text-size-20 margin-bottom-20 text-dark text-center">Por favor, rellene las siguientes casillas para agregar un nuevo trueque:</h4>
-              <form name="contactForm" class="customform" action="javascript:;" onsubmit="almacenarTrueque()"> 
+              
+              <form id="formulario" method="POST">
+                
                 <div class="s-12">
                   <div class="margin">
                     <div class="s-12 m-12 l-8">
@@ -65,7 +67,7 @@
                     <br/>
                     <br/>
                     <div class="s-4 m-4 l-4">
-                      <input name="año" id="año" placeholder="Año"  type="text">
+                      <input name="año" id="año" placeholder="Año"  type="number">
                       <p class="añoerror" class="name-error form-error"></p>
                     </div>
                   </div>
@@ -73,7 +75,7 @@
                 <div class="s-12">
                   <div class="margin">
                     <div class="s-12 m-12 l-8">
-                      <input name="autor" id="autor" placeholder="Autor del libro" type="text">
+                      <input name="autore" id="autore" placeholder="Autor del libro" type="text">
                       <p id="tituloerror"></p>
                     </div>
                     <br/>
@@ -81,7 +83,7 @@
                     <div class="s-4 m-4 l-4">
                     </div>
                     <div class="s-4 m-4 l-4">
-                      <input name="isbn" id="isbn" placeholder="ISBN" type="text">
+                      <input name="isbn" id="isbn" placeholder="ISBN" type="number">
                       <p id="editorialerror"class="name-error form-error"></p>
                     </div>
                   </div>
@@ -109,7 +111,6 @@
                 </div>
                 <div class="s-12"><button class="s-12 submit-form button background-primary text-white" type="submit" value="Agregar">Agregar Trueque</button></div>
               </form>
-              
             </div>           
           </section> 
       </main>
@@ -129,28 +130,29 @@
             <div class="margin">
               <!-- Collumn 1 -->              
               <div class="s-12 m-12 l-4 margin-m-bottom-30">
-                <h3 class="text-size-16">Company Address</h3>
+                <h3 class="text-size-16">Proyecto Final</h3>
                 <p class="text-size-14">
-                   Responsive Street 7<br>
-                   London - United Kingdom<br> 
-                   Europe
+                   Universidad Fidelitas<br>
+                  Facultad de Ingenieria<br> 
+                  Sede San Pedro
                 </p>               
               </div>
               <!-- Collumn 2 -->
               <div class="s-12 m-12 l-4 margin-m-bottom-30">
-                <h3 class="text-size-16">E-mail</h3>
+                <h3 class="text-size-16">E-mails</h3>
                 <p class="text-size-14">
-                   contact@sampledomain.com<br>
-                   office@sampledomain.com
+                   zuywg@outlook.es<br>
+                   jagdishham@outlook.es<br>
+                   daniromroj@outlook.es
                 </p>              
               </div>
               <!-- Collumn 3 -->
               <div class="s-12 m-12 l-4 ">
                 <h3 class="text-size-16">Phone Numbers</h3>
                 <p class="text-size-14">
-                   0800 4521 800 50<br>
-                   0450 5896 625 16<br>
-                   0798 6546 465 15
+                   +506 8878-9090<br>
+                   +506 8999-9090<br>
+                   +506 8333-4340
                 </p>             
               </div>
             </div>
@@ -161,11 +163,10 @@
         <!-- Bottom Footer -->
         <section class="padding background-dark full-width">
           <div class="text-center">
-            <p class="text-size-12">Copyright 2019, Vision Design - graphic zoo</p>
-            <p class="text-size-12">All images is purchased from Bigstock. Do not use the images in your website.</p>
+            <p class="text-size-12">Tercer Cuatrimestre, Diciembre 2021</p>
+            <p class="text-size-12">Grupo #10: Blanco</p>
           </div>
         </section>
-      </footer>
     </div>
     <script type="text/javascript" src="js/responsee.js"></script>
     <script type="text/javascript" src="js/jquery.events.touch.js"></script>
