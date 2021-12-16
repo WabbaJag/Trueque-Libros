@@ -20,7 +20,7 @@
 
   <body class="size-1140" >
           <!-- HEADER -->
-      <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
+          <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
         <!-- Top Navigation -->
         <nav class="background-transparent background-transparent-hightlight full-width sticky">
           <div class="s-12 l-2">
@@ -35,10 +35,10 @@
             <div class="top-nav right">
               <p class="nav-text"></p>
               <ul class="right chevron">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="trueque-mostrar.html">Ver Trueque</a></li>             
+                <li><a href="index.html" >Inicio</a></li>
+                <li><a href="trueques-mostrar.php">Ver Trueques</a></li>             
                 <li><a href="crearTrueque.html">Agregar Trueque</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="logout.html">Cerrar sesións</a></li>
               </ul>
             </div>
           </div>  

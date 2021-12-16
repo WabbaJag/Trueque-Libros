@@ -20,7 +20,7 @@
 
   <body class="size-1140" >
           <!-- HEADER -->
-      <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
+          <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
         <!-- Top Navigation -->
         <nav class="background-transparent background-transparent-hightlight full-width sticky">
           <div class="s-12 l-2">
@@ -36,9 +36,9 @@
               <p class="nav-text"></p>
               <ul class="right chevron">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="trueque-mostrar.html">Ver Trueque</a></li>             
+                <li><a href="trueques-mostrar.php">Ver Trueques</a></li>             
                 <li><a href="crearTrueque.html">Agregar Trueque</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="logout.html">Cerrar sesións</a></li>
               </ul>
             </div>
           </div>  
@@ -52,53 +52,42 @@
 
         <!-- Content -->
         <article>
+        <?php
+
+            $trueque;
+
+              if(empty($_REQUEST['ID_TRUEQUE'])){
+                echo 'error en el id, el id es '.$_REQUEST['ID_TRUEQUE'];
+              }else{
+                $id_trueque = $_REQUEST['ID_TRUEQUE'];
+                if(!is_numeric($id_trueque)){
+                  header("location: index.php");
+                }else{
+                  $connect = new mysqli("localhost", "root", "", "trueque-libro");
+                  if($connect == null){
+                  echo "ERROR DE CONEXION!!!";
+                  }
+                }
+
+
+                
+                $sqlQuery = "SELECT * FROM venta where id =".$id_trueque.";";
+                $rslt = $connect->query($sqlQuery);
+
+                $trueque = $rslt->fetch_assoc();
+                $sqlQuery2 = "SELECT nombre FROM usuario where id =".$trueque["id_usuario"].";";
+                $rslt2 = $connect->query($sqlQuery2);
+
+            }
+            ?>
           <header class="section-top-padding background-white">
             
             <div class="line text-center"> 
               <h4 class="text-dark text-l-size-20 text-thick text-line-height-1">OFERTA DE TRUEQUE</h4>      
               <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">Los cantos de Maldoror</h1>
-              <h2 class= margin-bottom-0 text-s-size-20 text-dark">ofrecido por <a href="#">librero123</a></h2>
             </div>  
           </header>
-          <?php
-
-          $trueque;
-
-            if(empty($_REQUEST['ID_TRUEQUE'])){
-              echo 'error en el id, el id es '.$_REQUEST['ID_TRUEQUE'];
-            }else{
-              $id_trueque = $_REQUEST['ID_TRUEQUE'];
-              if(!is_numeric($id_trueque)){
-                header("location: index.php");
-              }else{
-                $connect = new mysqli("localhost", "root", "", "trueque-libro");
-                if($connect == null){
-                echo "ERROR DE CONEXION!!!";
-                }
-              }
-
-
-              
-              $sqlQuery = "SELECT * FROM venta where id =".$id_trueque.";";
-              $rslt = $connect->query($sqlQuery);
-
-              $trueque = $rslt->fetch_assoc();
-
-              echo "usuario id es ".$trueque["id_usuario"];
-              $sqlQuery2 = "SELECT nombre FROM usuario where id =".$trueque["id_usuario"].";";
-              $rslt2 = $connect->query($sqlQuery2);
-
-              $nombreUsuario = $rslt->fetch_assoc();
-
-              echo "EL NOMBRE DEL USUARIO ES ".$nombreUsuario;
-
-
-              ECHO "los datos son:\n";
-              foreach($trueque as $dato){
-                echo $dato . "\n";
-            }
-          }
-      ?>
+          
           <section class="section-top-padding background-white"> 
             <div class="line">
               <div class="s-12 m-12 l-4 center">

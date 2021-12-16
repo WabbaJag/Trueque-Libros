@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js-p/login.js"></script>
 </head>
 
 <body>
@@ -24,17 +25,18 @@
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
-			<label for="username">Nombre de usuario</label>
+			<label for="campoUsuario">Nombre de usuario</label>
 			<br/>
-			<input type="text" id="username" placeholder="Nombre de usuario">
+			<input type="text" id="campoUsuario" placeholder="Nombre de usuario" onkeyup="verificar()">
 			<br/>
-			<label for="password">Clave</label>
+			<p id="parrafoInfo"></p>
+			<label for="campoClave">Clave</label>
 			<br/>
-			<input type="password" id="password" placeholder="Escriba su contraseña">
+			<input type="password" id="campoClave" placeholder="Escriba su contraseña">
 			<br/>
-			<button type="submit" ><a href="index.html">Ingresar</a>  </button>
+			<input type="button" id="botonLogin" value="Ingresar" onclick="ingresar()">
 			<br/>
-			<a href="#"><p class="small">He olvidado mi clave</p></a>
+			<a href="Registro.html"><p class="small">Registrarse</p></a>
 		</div>
 	</div>
 </body>
