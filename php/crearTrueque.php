@@ -37,9 +37,7 @@
         //Configuración de la codificación de los carácteres
         
         //Redacto String con COMANDO SQL
-
-        //up o insert a tabla autor
-        $comando = "UPDATE `truque` SET titulo='" .$titulo . "', autore='" .$autore . "', año='" .$año . "', editorial='" .$editorial . "',
+        $comando = "UPDATE 'truque' SET titulo='" .$titulo . "', autore='" .$autore . "', año='" .$año . "', editorial='" .$editorial . "',
         descripcion='" .$descripcion . "', mensaje='" .$mensaje . "',creador='" .$creador . "' WHERE trueque=" . $trueque;
         //Ejecuto COMANDO SQL
         $resultado = mysqli_query($laconexion, $comando);
