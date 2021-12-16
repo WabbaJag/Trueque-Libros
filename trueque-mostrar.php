@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimalista - New Amazing HTML5 Template</title>
+    <title>e-Books</title>
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/responsee.css">
@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="css/template-style.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,400,600,900&subset=latin-ext" rel="stylesheet"> 
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>      
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js-p/trueques-mostrar.js"></script>          
   </head>
 
-  <body class="size-1140">
-      <!-- HEADER -->
+  <body class="size-1140" >
+          <!-- HEADER -->
       <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
         <!-- Top Navigation -->
         <nav class="background-transparent background-transparent-hightlight full-width sticky">
@@ -43,39 +44,83 @@
           </div>  
         </nav>
       </header>
+
       
       <!-- MAIN -->
       <main role="main">
+
+
         <!-- Content -->
         <article>
           <header class="section-top-padding background-white">
+            
             <div class="line text-center"> 
               <h4 class="text-dark text-l-size-20 text-thick text-line-height-1">OFERTA DE TRUEQUE</h4>      
               <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">Los cantos de Maldoror</h1>
               <h2 class= margin-bottom-0 text-s-size-20 text-dark">ofrecido por <a href="#">librero123</a></h2>
             </div>  
           </header>
+          <?php
+
+          $trueque;
+
+            if(empty($_REQUEST['ID_TRUEQUE'])){
+              echo 'error en el id, el id es '.$_REQUEST['ID_TRUEQUE'];
+            }else{
+              $id_trueque = $_REQUEST['ID_TRUEQUE'];
+              if(!is_numeric($id_trueque)){
+                header("location: index.php");
+              }else{
+                $connect = new mysqli("localhost", "root", "", "trueque-libro");
+                if($connect == null){
+                echo "ERROR DE CONEXION!!!";
+                }
+              }
+
+
+              
+              $sqlQuery = "SELECT * FROM venta where id =".$id_trueque.";";
+              $rslt = $connect->query($sqlQuery);
+
+              $trueque = $rslt->fetch_assoc();
+
+              echo "usuario id es ".$trueque["id_usuario"];
+              $sqlQuery2 = "SELECT nombre FROM usuario where id =".$trueque["id_usuario"].";";
+              $rslt2 = $connect->query($sqlQuery2);
+
+              $nombreUsuario = $rslt->fetch_assoc();
+
+              echo "EL NOMBRE DEL USUARIO ES ".$nombreUsuario;
+
+
+              ECHO "los datos son:\n";
+              foreach($trueque as $dato){
+                echo $dato . "\n";
+            }
+          }
+      ?>
           <section class="section-top-padding background-white"> 
             <div class="line">
               <div class="s-12 m-12 l-4 center">
                 <div class="mx-auto">
                   <a class="image-hover-zoom margin-bottom" href="/"><img src="img/libro1.jpg"  alt=""></a>
                   <h2>Título:</h2>
-                  <h3 class="line text-center">Los cantos de Maldoror</h3>
+                  <h3 class="line text-center"><?=$trueque["titulo"]?></h3>
                   <h2>Autor:</h2>
-                  <h3 class="line text-center">Conde de Lautréamont</h3> 
+                  <h3 class="line text-center"><?=$trueque["autor"]?></h3> 
                   <h2>Género:</h2>
-                  <h3 class="line text-center">Novela satírica/ficción gótica</h3> 
+                  <h3 class="line text-center"><?=$trueque["genero"]?></h3> 
                   <h2>Año:</h2>
-                  <h3 class="line text-center">1868</h3>
+                  <h3 class="line text-center"><?=$trueque["año"]?></h3>
                   <h2>Editorial:</h2>
-                  <h3 class="line text-center">Ediciones Cátedra</h3> 
+                  <h3 class="line text-center"><?=$trueque["editorial"]?></h3> 
                   <h2>Idioma:</h2>
-                  <h3 class="line text-center">Español</h3>       
+                  <h3 class="line text-center"><?=$trueque["idioma"]?></h3>       
                   <h2>ISBN:</h2>
-                  <h3 class="line text-center">8437607434</h3>  
-                  <br/><br/><br/>
-                  <button class=" center button background-primary text-white" type="submit">Hacer una oferta</button>                         
+                  <h3 class="line text-center"><?=$trueque["isbn"]?></h3>
+                  <h2>Descripcion:</h2>
+                  <p class="line text-center"><?=$trueque["descripcion"]?></p>
+                   
                 </div>
         
               </div>
@@ -144,57 +189,62 @@
             </div> 
             
           </section>
-      
-      <!-- FOOTER -->
-      <section class="section-small-padding text-center background-dark full-width">
-        <div class="line">
-          <div class="margin">
-            <!-- Collumn 1 -->              
-            <div class="s-12 m-12 l-4 margin-m-bottom-30">
-              <h3 class="text-size-16">Proyecto Final</h3>
-              <p class="text-size-14">
-                 Universidad Fidelitas<br>
-                Facultad de Ingenieria<br> 
-                Sede San Pedro
-              </p>               
+        </main>
+                <footer>
+            <!-- Contact Us -->
+            <div class="background-dark padding text-center footer-social">
+              <a class="margin-right-10" target="_blank" href="https://www.facebook.com"><i class="icon-facebook_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">FACEBOOK</span></a>
+              <a class="margin-right-10" target="_blank" href="https://www.twitter.com"><i class="icon-twitter_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">TWITTER</span></a>
+              <a class="margin-right-10" target="_blank" href="https://www.instagram.com"><i class="icon-instagram_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">INSTAGRAM</span></a>
             </div>
-            <!-- Collumn 2 -->
-            <div class="s-12 m-12 l-4 margin-m-bottom-30">
-              <h3 class="text-size-16">E-mails</h3>
-              <p class="text-size-14">
-                 zuywg@outlook.es<br>
-                 jagdishham@outlook.es<br>
-                 daniromroj@outlook.es
-              </p>              
-            </div>
-            <!-- Collumn 3 -->
-            <div class="s-12 m-12 l-4 ">
-              <h3 class="text-size-16">Phone Numbers</h3>
-              <p class="text-size-14">
-                 +506 8878-9090<br>
-                 +506 8999-9090<br>
-                 +506 8333-4340
-              </p>             
-            </div>
-          </div>
-        </div>  
-      </section>
-      <hr class="break margin-top-bottom-0" style="border-color: rgba(0, 0, 0, 0.80);">
-      
-      <!-- Bottom Footer -->
-      <section class="padding background-dark full-width">
-        <div class="text-center">
-          <p class="text-size-12">Tercer Cuatrimestre, Diciembre 2021</p>
-          <p class="text-size-12">Grupo #10: Blanco</p>
+
+            <!-- Main Footer -->
+            <section class="section-small-padding text-center background-dark full-width">
+              <div class="line">
+                <div class="margin">
+                  <!-- Collumn 1 -->              
+                  <div class="s-12 m-12 l-4 margin-m-bottom-30">
+                    <h3 class="text-size-16">Company Address</h3>
+                    <p class="text-size-14">
+                      Responsive Street 7<br>
+                      London - United Kingdom<br> 
+                      Europe
+                    </p>               
+                  </div>
+                  <!-- Collumn 2 -->
+                  <div class="s-12 m-12 l-4 margin-m-bottom-30">
+                    <h3 class="text-size-16">E-mail</h3>
+                    <p class="text-size-14">
+                      contact@sampledomain.com<br>
+                      office@sampledomain.com
+                    </p>              
+                  </div>
+                  <!-- Collumn 3 -->
+                  <div class="s-12 m-12 l-4 ">
+                    <h3 class="text-size-16">Phone Numbers</h3>
+                    <p class="text-size-14">
+                      0800 4521 800 50<br>
+                      0450 5896 625 16<br>
+                      0798 6546 465 15
+                    </p>             
+                  </div>
+                </div>
+              </div>  
+            </section>
+            <hr class="break margin-top-bottom-0" style="border-color: rgba(0, 0, 0, 0.80);">
+            
+            <!-- Bottom Footer -->
+            <section class="padding background-dark full-width">
+              <div class="text-center">
+                <p class="text-size-12">Copyright 2019, Vision Design - graphic zoo</p>
+                <p class="text-size-12">All images is purchased from Bigstock. Do not use the images in your website.</p>
+              </div>
+            </section>
+          </footer>
         </div>
-      </section>
-        <hr class="break margin-top-bottom-0" style="border-color: rgba(0, 0, 0, 0.80);">
-    
-      </footer>
-    </div>
-    <script type="text/javascript" src="js/responsee.js"></script>
-    <script type="text/javascript" src="js/jquery.events.touch.js"></script>
-    <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
-    <script type="text/javascript" src="js/template-scripts.js"></script> 
-  </body>
+        <script type="text/javascript" src="js/responsee.js"></script>
+        <script type="text/javascript" src="js/jquery.events.touch.js"></script>
+        <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
+        <script type="text/javascript" src="js/template-scripts.js"></script> 
+      </body>
 </html>

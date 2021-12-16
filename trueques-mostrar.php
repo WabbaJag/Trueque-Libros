@@ -51,7 +51,7 @@
       <main role="main">
         <header class="section background-white">
           <div class="line text-center">        
-            <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">Perfil de Juan</h1>
+            <h1 class="text-dark text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1">Lista de Trueques</h1>
             <p class="margin-bottom-0 text-size-16 text-dark"</p>
           </div>  
         </header>
@@ -59,14 +59,14 @@
           <table class="styled-table">
             <?php
             $connect = new mysqli("localhost", "root", "", "trueque-libro");
-            if($connect != null){
-             echo "connected";
-            }else {
-             echo "failed to connect ";
+            if($connect == null){
+             echo "ERROR DE CONEXION!!!";
             }
              
             $sqlQuery = "SELECT * FROM venta";
             $qry = $connect->query($sqlQuery);
+
+            
              
             echo "<table>
                     <tr>
@@ -79,6 +79,7 @@
                     </tr>";
                   while($row = $qry->fetch_assoc())
                   {
+                    $direccion = $row["ID"];
                     echo 
                     "<tr>
                       <td>".$row["id_usuario"]."</td>
@@ -87,6 +88,7 @@
                       <td>".$row["genero"]."</td>
                       <td>".$row["editorial"]."</td>
                       <td>".$row["idioma"]."</td>
+                      <td><a href='trueque-mostrar.php?ID_TRUEQUE=".$direccion."'>VER</a></td>
                       <td>
                     </tr>";
             }
